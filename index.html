@@ -11,11 +11,11 @@
 </head>
 
 <body class="relative">
-    <nav
-        class=" shadow-[0px_5px_10px_rgba(0,0,0,0.3)] bg-orange-400 pl-3 pr-3 flex flex-row-reverse h-20 items-center justify-between">
+    <nav class=" shadow-[0px_5px_10px_rgba(0,0,0,0.3)] bg-orange-400 pl-3 pr-3 flex flex-row-reverse sticky
+ h-20 items-center justify-between">
         <div class="flex flex-row-reverse items-center gap-5">
             <div class=" w-15 h-15 rounded-full shadow-[0px_0px_10px_rgba(0,0,0)] overflow-hidden">
-                <img src="Messi 10.jpeg" alt="" class=" w-15 h-20">
+                <img src="Messi 10.jpeg" alt="profile" class=" w-15 h-20">
             </div>
         </div>
         <h1
@@ -29,58 +29,56 @@
     <main id="main" class="h-fit grid grid-cols-3 gird-rows-6  mt-10 h-10 gap-3 pl-3 pr-3 justify-center">
         <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg flex flex-col">
             <p class="text-md text-gray-400 pl-3 pt-1">Revenue</p>
-            <h1 class="font-Georgia text-green-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">+0.00
+            <h1 class="font-Georgia text-green-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">+<span
+                    id="returned">0.00</span>
                 MAD</h1>
         </div>
         <div class="rounded-lg shadow-[0px_0px_5px_rgba(0,0,0,0.3)]">
             <p class="text-md text-gray-400 pl-3 pt-1">Depense</p>
-            <h1
-                class="pl-2 font-Georgia text-red-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_]">-0.00 MAD
+            <h1 class="pl-2 font-Georgia text-red-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_]">-<span
+                    id="depensed">0.00</span> MAD
             </h1>
         </div>
         <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg">
             <p class="text-md text-gray-400 pl-3 pt-1">Sold</p>
             <h1 class="pl-2 font-Georgia text-blue-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">
-                0.00 MAD</h1>
+                <span id="Sold">0.00</span> MAD
+            </h1>
         </div>
         <div id="plus"
-            class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 absolute top-150 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none">
+            class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 fixed top-150 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none">
             <span class="text-6xl pb-4 text-blue-800 ">+</span>
         </div>
 
-        <div class="col-end-3">
+        <div class="col-span-3 justify-center " id="cards-container">
             <span class="text-9xl mb-3 row-end-5 col-end-3 flex items-center justify-center pt-0">💳</span>
-            <span class="col-end-3 row-end-4 p-auto flex items-center justify-center text-md text-gray-500">your BZTAM is empty</span>
+            <span class="col-end-3 row-end-4 p-auto flex items-center justify-center text-md text-gray-500">your BZTAM
+                is empty</span>
         </div>
         <div class="popup-container" id="popup-container">
             <div class="popup">
-            <div class="input-group">
-                <label for="Description">Description</label>
-            <input type="text" name="Description" id="Description" placeholder="ex.school,food...">
+                <div class="input-group">
+                    <label for="Description">Description</label>
+                    <input type="text" name="Description" id="Description" placeholder="ex.school,food...">
+                </div>
+                <div class="input-group">
+                    <label for="montant">Montant</label>
+                    <input type="number" name="montant" id="montant" pattern="[0-9]">
+                </div>
+                <div class="input-group">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date">
+                </div>
+                <div class="buttons">
+                    <button id="Revenue">Revenue</button>
+                    <button id="Depense">Depense</button>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="date">Date</label>
-            <input type="date" name="date" id="date">
-            </div>
-            <div class="buttons">
-                <button id="Revenue">Revenue</button>
-            <button id="Depense">Depense</button>
-            </div>
-        </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        let button = document.getElementById("plus")
-        button.addEventListener("click", () => {
-            let card = document.getElementById("popup-container");
-            card.style.visibility = "visible"
-            
-
-        })
-        
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
