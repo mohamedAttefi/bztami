@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="static">
+    <nav class=" shadow-[0px_5px_10px_rgba(0,0,0,0.3)] bg-orange-400 pl-3 pr-3 flex flex-row-reverse h-20 items-center justify-between">
+        <div class="flex flex-row-reverse items-center gap-5">
+            <div class=" w-15 h-15 rounded-full shadow-[0px_0px_10px_rgba(0,0,0)] overflow-hidden">
+                <img src="Messi 10.jpeg" alt="" class=" w-15 h-20">
+            </div>
+        </div>
+        <h1 class="tracking-widest font-verdana font-black text-white text-shadow-[0px_3px_5px_rgba(0,0,0,0.5)] text-3xl">BZTAMI</h1>
+        <div class="w-15 h-15 rounded-full shadow-[0px_0px_10px_rgba(0,0,0)]">
+            <img src="logo.jpeg" alt="" class="w-15 h-15 rounded-full justify-start ml-0">
+
+        </div>
+    </nav>
+    <main class="grid grid-cols-3 mt-10 h-10 gap-3 pl-3 pr-3">
+        <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg flex flex-col">
+            <p class="text-md text-gray-400 pl-3 pt-1">Revenue</p>
+            <h1 class="font-Georgia text-green-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">+0.00 MAD</h1>
+        </div>
+        <div class="rounded-lg shadow-[0px_0px_5px_rgba(0,0,0,0.3)]">
+            <p class="text-md text-gray-400 pl-3 pt-1">Depense</p>
+            <h1 id="Depense" class="pl-2 font-Georgia text-red-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_]">-0.00 MAD</h1>
+        </div>
+        <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg">
+            <p class="text-md text-gray-400 pl-3 pt-1">Sold</p>
+            <h1 class="pl-2 font-Georgia text-blue-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">0.00 MAD</h1>
+        </div>
+        <div onclick="popUp()" class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 absolute bottom-5 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none">
+            <span class="text-6xl pb-4 text-blue-800">+</span>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
