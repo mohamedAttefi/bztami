@@ -3,7 +3,7 @@ body{
 }
 .popup-container{
     visibility: hidden;
-    position: absolute;
+    position: fixed;
     justify-self: center;
     width: 100%;
     height: 100vh;

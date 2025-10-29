@@ -9,11 +9,13 @@ let Revenue = document.getElementById("Revenue");
 let rCount = 0;
 let dCount = 0;
 let num = 0;
+let stored = true;
+let CardsContainer = document.getElementById("cards-container");
 
 Depense.addEventListener("click", () => {
   let montant = document.getElementById("montant");
   let Description = document.getElementById("Description");
-  let date = document.getElementById("date")
+  let date = document.getElementById("date");
   console.log("lll");
   if (montant.value <= 0 || montant.value == "") {
     console.log("lll2");
@@ -52,10 +54,10 @@ Depense.addEventListener("click", () => {
   p.classList = "text-md text-white pl-3 pt-1";
   p.innerHTML = Description.value;
   DepenseCard.appendChild(p);
-  let Date= document.createElement("p")
+  let Date = document.createElement("p");
   Date.classList = "text-md text-white pl-3 pt-1";
-  Date.innerHTML = date.value
-  DepenseCard.appendChild(Date)
+  Date.innerHTML = date.value;
+  DepenseCard.appendChild(Date);
   let h1 = document.createElement("h1");
   h1.innerHTML = "-" + montant.value;
   console.log("lll");
@@ -76,6 +78,65 @@ Depense.addEventListener("click", () => {
   let Sold = document.getElementById("Sold");
   Sold.textContent =
     parseInt(returned.textContent) - parseInt(depensed.textContent);
+  let depenseArray;
+  if (localStorage.getItem("depenseItems")) {
+    depenseArray = JSON.parse(localStorage.getItem("depenseItems"));
+  } else {
+    depenseArray = [];
+  }
+  let data = {
+    montant: montant.value,
+    description: Description.value,
+    date: date.value,
+    id: CardContainer,
+    sold: Sold.textContent,
+    depensed: depensed.textContent,
+    returned: returned.textContent,
+  };
+
+  depenseArray.push(data);
+  localStorage.setItem("depenseItems", JSON.stringify(depenseArray));
+});
+
+globalThis.addEventListener("DOMContentLoaded", () => {
+  let depenseArray = localStorage.getItem("depenseItems");
+  if (localStorage.getItem("depenseItems")) {
+    depenseArray = JSON.parse(localStorage.getItem("depenseItems"));
+  } else {
+    depenseArray = [];
+  }
+  if (depenseArray.length === 0) return;
+
+  let CardsContainer = document.getElementById("cards-container");
+  let CardContainer = document.createElement("div");
+  CardContainer.id = "CardContainer";
+  CardContainer.classList =
+    "flex flex-col gap-5 items-center rounded-lg h-fit w-screen mt-10";
+  CardsContainer.replaceChildren(CardContainer);
+
+  depenseArray.forEach((data) => {
+    let DepenseCard = document.createElement("div");
+    DepenseCard.classList =
+      "bg-red-500 shadow-[0px_0px_5px_red] rounded-lg h-25 w-100";
+
+    let p = document.createElement("p");
+    p.classList = "text-md text-white pl-3 pt-1";
+    p.textContent = data.description;
+
+    let DateP = document.createElement("p");
+    DateP.classList = "text-md text-white pl-3 pt-1";
+    DateP.textContent = data.date;
+
+    let h1 = document.createElement("h1");
+    h1.textContent = "-" + data.montant;
+    h1.classList =
+      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)]";
+
+    DepenseCard.appendChild(p);
+    DepenseCard.appendChild(DateP);
+    DepenseCard.appendChild(h1);
+    CardContainer.appendChild(DepenseCard);
+  });
 });
 
 Revenue.addEventListener("click", () => {
@@ -97,7 +158,6 @@ Revenue.addEventListener("click", () => {
     let card = document.getElementById("popup-container");
     card.style.visibility = "hidden";
   }
-
   let CardsContainer = document.getElementById("cards-container");
   let CardContainer = document.getElementById("CardContainer");
   if (!CardContainer) {
@@ -132,4 +192,66 @@ Revenue.addEventListener("click", () => {
   let Sold = document.getElementById("Sold");
   Sold.textContent =
     parseInt(returned.textContent) - parseInt(depensed.textContent);
+  let RevenueArray;
+  if (localStorage.getItem("revenueItems")) {
+    RevenueArray = JSON.parse(localStorage.getItem("revenueItems"));
+  } else {
+    RevenueArray = [];
+  }
+  let data = {
+    montant: montant.value,
+    description: Description.value,
+    date: date.value,
+    id: CardContainer,
+    sold :  returned.textContent - depensed.textContent,
+    depensed: depensed.textContent,
+    returned: returned.textContent,
+  };
+  console.log(data.sold)
+  
+
+  RevenueArray.push(data);
+  localStorage.setItem("revenueItems", JSON.stringify(RevenueArray));
+  stored = true;
+});
+
+globalThis.addEventListener("DOMContentLoaded", () => {
+  let RevenueArray = localStorage.getItem("revenueItems");
+  if (localStorage.getItem("revenueItems")) {
+    RevenueArray = JSON.parse(localStorage.getItem("revenueItems"));
+  } else {
+    RevenueArray = [];
+  }
+  if (RevenueArray.length === 0) return;
+
+  let CardsContainer = document.getElementById("cards-container");
+  let CardContainer = document.createElement("div");
+  CardContainer.id = "CardContainer";
+  CardContainer.classList =
+    "flex flex-col gap-5 items-center rounded-lg h-fit w-screen mt-10";
+  CardsContainer.replaceChildren(CardContainer);
+
+  RevenueArray.forEach((data) => {
+    let DepenseCard = document.createElement("div");
+    DepenseCard.classList =
+      "bg-green-500 shadow-[0px_0px_5px_red] rounded-lg h-25 w-100";
+
+    let p = document.createElement("p");
+    p.classList = "text-md text-white pl-3 pt-1";
+    p.textContent = data.description;
+
+    let DateP = document.createElement("p");
+    DateP.classList = "text-md text-white pl-3 pt-1";
+    DateP.textContent = data.date;
+
+    let h1 = document.createElement("h1");
+    h1.textContent = "-" + data.montant;
+    h1.classList =
+      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)]";
+
+    DepenseCard.appendChild(p);
+    DepenseCard.appendChild(DateP);
+    DepenseCard.appendChild(h1);
+    CardContainer.appendChild(DepenseCard);
+  });
 });
