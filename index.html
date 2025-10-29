@@ -19,7 +19,7 @@
             </div>
         </div>
         <h1
-            class="tracking-widest font-verdana font-black text-white text-shadow-[0px_3px_5px_rgba(0,0,0,0.5)] text-3xl">
+            class="tracking-widest font-verdana font-black text-white text-shadow-[0px_3px_5px_rgba(0,0,0,0.5)] text-3xl" id="bztami">
             BZTAMI</h1>
         <div class="w-15 h-15 rounded-full shadow-[0px_0px_10px_rgba(0,0,0)]">
             <img src="logo.jpeg" alt="" class="w-15 h-15 rounded-full justify-start ml-0">
@@ -30,19 +30,19 @@
         <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg flex flex-col">
             <p class="text-md text-gray-400 pl-3 pt-1">Revenue</p>
             <h1 class="font-Georgia text-green-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">+<span
-                    id="returned">0.00</span>
-                MAD</h1>
+                    id="returned">0.00</span>DH
+                </h1>
         </div>
         <div class="rounded-lg shadow-[0px_0px_5px_rgba(0,0,0,0.3)]">
             <p class="text-md text-gray-400 pl-3 pt-1">Depense</p>
             <h1 class="pl-2 font-Georgia text-red-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_]">-<span
-                    id="depensed">0.00</span> MAD
+                    id="depensed">0.00</span>DH
             </h1>
         </div>
         <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg">
             <p class="text-md text-gray-400 pl-3 pt-1">Sold</p>
             <h1 class="pl-2 font-Georgia text-blue-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">
-                <span id="Sold">0.00</span> MAD
+                <span id="Sold">0.00</span>DH
             </h1>
         </div>
         <div id="plus"
@@ -50,30 +50,35 @@
             <span class="text-6xl pb-4 text-blue-800 ">+</span>
         </div>
 
-        <div class="col-span-3 flex flex-col border-1 items-center gap-3" id="cards-container">
+        <div class="col-span-3 flex flex-col items-center gap-3" id="cards-container">
             <span class="text-9xl mb-3 row-end-5 col-end-3 flex items-center justify-center pt-0">💳</span>
             <span class="col-end-3 row-end-4 p-auto flex items-center justify-center text-md text-gray-500">your BZTAM
                 is empty</span>
         </div>
         <div class="popup-container" id="popup-container">
-            <div class="popup">
+            <div class="popup grid gird-cols-2">
                 
                 
+                <div class="input-group static">
+                    <i class="fa-solid fa-xmark absolute right-3 top-2" id="close"></i>
+                    <label for="Titre">Titre</label>
+                    <input type="text" name="Titre" id="Titre" placeholder="ex.school, food..." autocomplete="off">
+                </div>
                 <div class="input-group">
                     <label for="Description">Description</label>
-                    <input type="text" name="Description" id="Description">
+                    <textarea name="Description" id="Description" class="border-1 rounded-2xl h-40 pl-5 pt-3" placeholder="Description..." autocomplete="off" ="off"></textarea>
                 </div>
                 <div class="input-group">
                     <label for="montant">Montant</label>
-                    <input type="number" name="montant" id="montant" pattern="[0-9]">
+                    <input type="number" name="montant" id="montant" pattern="[0-9]" autocomplete="off">
                 </div>
                 <div class="input-group">
                     <label for="date">Date</label>
-                    <input type="date" name="date" id="date">
+                    <input type="date" name="date" id="date" autocomplete="off">
                 </div>
                 <div class="buttons">
-                    <button id="Revenue">Revenue</button>
-                    <button id="Depense">Depense</button>
+                    <button id="Revenue" class="h-15 flex items-center justify-center">Revenue</button>
+                    <button id="Depense" class="h-15 flex items-center justify-center">Depense</button>
                 </div>
             </div>
         </div>
