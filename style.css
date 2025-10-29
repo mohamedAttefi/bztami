@@ -2,7 +2,7 @@ body{
     position: relative;
 }
 .popup-container{
-    visibility: hidden;
+    visibility: hiddeN;
     position: fixed;
     justify-self: center;
     width: 100%;
