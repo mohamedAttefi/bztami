@@ -28,7 +28,7 @@ body{
     display: flex;
     column-gap: 1vw;
     align-self: center;
-
+    
 }
 .input-group input{
     width: 80%;
