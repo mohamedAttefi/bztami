@@ -1,5 +1,3 @@
-
-
 let button = document.getElementById("plus");
 button.addEventListener("click", () => {
   let card = document.getElementById("popup-container");
@@ -22,7 +20,7 @@ let stored = true;
 let CardsContainer = document.getElementById("cards-container");
 let data;
 Depense.addEventListener("click", () => {
-  let a = Math.floor(Math.random()*1000)
+  let a = Math.floor(Math.random() * 1000);
   let montant = document.getElementById("montant");
   let titre = document.getElementById("Titre");
   let Description = document.getElementById("Description");
@@ -138,12 +136,13 @@ Depense.addEventListener("click", () => {
     depenseArray.push(data);
     localStorage.setItem("depenseItems", JSON.stringify(depenseArray));
   }
-    location.reload()
+
+    setTimeout(()=>{location.reload()}, 7000)
 
 });
 
 Revenue.addEventListener("click", () => {
-  let a = Math.floor(Math.random()*1000)
+  let a = Math.floor(Math.random() * 1000);
   let montant = document.getElementById("montant");
   let titre = document.getElementById("Titre");
   let Description = document.getElementById("Description");
@@ -186,7 +185,7 @@ Revenue.addEventListener("click", () => {
       CardsContainer.replaceChildren(CardContainer);
     }
     let RevenueCard = document.createElement("div");
-    RevenueCard.id = "RC" +a;
+    RevenueCard.id = "RC" + a;
     console.log(RevenueCard.id);
     RevenueCard.classList =
       " shadow-[0px_0px_10px_green] bg-green-500 rounded-lg h-30 relative";
@@ -255,7 +254,8 @@ Revenue.addEventListener("click", () => {
     localStorage.setItem("revenueItems", JSON.stringify(RevenueArray));
   }
 
-  location.reload()
+
+  setTimeout(()=>{location.reload()}, 7000)
 });
 let montant = document.getElementById("montant");
 let titre = document.getElementById("Titre");
@@ -324,10 +324,7 @@ window.addEventListener("DOMContentLoaded", () => {
       Sold.textContent = "+" + Sold.textContent;
     }
   });
-});
 
-window.addEventListener('DOMContentLoaded', () => {
-  
   let depenseArray = localStorage.getItem("depenseItems");
   if (localStorage.getItem("depenseItems")) {
     depenseArray = JSON.parse(localStorage.getItem("depenseItems"));
@@ -335,21 +332,11 @@ window.addEventListener('DOMContentLoaded', () => {
     depenseArray = [];
   }
   if (depenseArray.length === 0) return;
-  let CardsContainer = document.getElementById("cards-container");
-  let CardContainer = document.createElement("div");
-  CardContainer.id = "CardContainer";
-  CardContainer.classList =
-    "grid grid-cols-2 pl-5 pr-5 gap-5 justify-around items-start rounded-lg h-fit w-screen mt-10";
-  CardsContainer.replaceChildren(CardContainer);
-  CardContainer.id = "CardContainer";
-  CardContainer.classList =
-    "grid grid-cols-2 pl-5 pr-5 gap-5 justify-around items-start rounded-lg h-fit w-screen mt-10";
-  CardsContainer.replaceChildren(CardContainer);
 
   depenseArray.forEach((data) => {
     let DepenseCard = document.createElement("div");
     DepenseCard.classList =
-      "bg-red-500 shadow-[0px_0px_10px_red] rounded-lg h-30 self-center relative";
+      "bg-red-500 shadow-[0px_0px_10px_red] rounded-lg h-30 self-center relative z-1";
     DepenseCard.id = data.id;
 
     let h1 = document.createElement("h1");
@@ -361,6 +348,7 @@ window.addEventListener('DOMContentLoaded', () => {
     pt.textContent = data.titre;
     let pd = document.createElement("p");
     pd.classList = "text-md text-white pl-3 pt-1 description";
+    pd.textContent = data.description
     let DateP = document.createElement("p");
     DateP.classList = "text-md text-white pl-3 pt-1 date";
     let trash = document.createElement("i");
@@ -396,7 +384,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   console.log(Sold.textContent);
   console.log(parseInt(data.depensed));
-})
+});
 
 let editedCardId = null;
 
@@ -414,10 +402,14 @@ document.getElementById("close-modifie").addEventListener("click", (e) => {
   const modifiePop = document.getElementById("modifie-container");
   modifiePop.classList.add("hidden");
 });
+document.getElementById("annule").addEventListener("click", (e) => {
+  const modifiePop = document.getElementById("modifie-container");
+  modifiePop.classList.add("hidden");
+});
 
 function confirmModification() {
   if (!editedCardId) return;
-  console.log(editedCardId)
+  console.log(editedCardId);
 
   const newTitre = document.getElementById("Titre-modifie");
   const newDate = document.getElementById("date-modifie");
@@ -427,15 +419,16 @@ function confirmModification() {
   const card = document.getElementById(editedCardId);
 
   const oldTitre = card.querySelector(".titre");
-  console.log(oldTitre)
+  console.log(oldTitre);
   const oldDate = card.querySelector(".date");
   const oldDescription = card.querySelector(".description");
   const oldMontant = card.querySelector(".montant");
 
   if (newTitre.value.trim() !== "") oldTitre.textContent = newTitre.value;
-  console.log(oldTitre.textContent)
+  console.log(oldTitre.textContent);
   if (newDate.value.trim() !== "") oldDate.textContent = newDate.value;
-  if (newDescription.value.trim() !== "") oldDescription.textContent = newDescription.value;
+  if (newDescription.value.trim() !== "")
+    oldDescription.textContent = newDescription.value;
   if (newMontant.value.trim() !== "")
     oldMontant.textContent =
       (card.classList.contains("bg-red-500") ? "-" : "+") +
@@ -463,10 +456,8 @@ function confirmModification() {
 
   document.getElementById("modifie-container").classList.add("hidden");
 
-  location.reload()
+  location.reload();
 }
-
-
 
 document.getElementById("cards-container").addEventListener("click", (e) => {
   if (e.target.classList.contains("fa-trash")) {
@@ -475,15 +466,45 @@ document.getElementById("cards-container").addEventListener("click", (e) => {
     const isRevenue = card.classList.contains("bg-green-500");
     const key = isRevenue ? "revenueItems" : "depenseItems";
     const array = JSON.parse(localStorage.getItem(key)) || [];
-    
 
-    
-
-    const updated = array.filter((item) => item.id !== card.id);
+    const updated = array.filter((item) => toString(item.id) !== toString(card.id));
     localStorage.setItem(key, JSON.stringify(updated));
 
-        
     card.remove();
-    location.reload()
+    if(array == []){location.reload}
   }
 });
+
+
+
+let revenueItems = JSON.parse(localStorage.getItem("revenueItems")) || [];
+let depenseItems = JSON.parse(localStorage.getItem("depenseItems")) || [];
+
+let dataTodownload = {
+  revenueItems,
+  depenseItems,
+};
+
+const jsonData = JSON.stringify(dataTodownload, null, 2);
+
+const blob = new Blob([jsonData], { type: "application/json" });
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement("a");
+document.body.appendChild(a);
+a.textContent = "DOWNLOAD HERE YOUR INFOS HERE";
+a.classList = "absolute top-[13%] left-[1%] text-blue-500 link z-[1]";
+a.addEventListener("click", () => {
+  a.href = url;
+  a.download = "localStorageData.json";
+  a.remove();
+});
+
+
+const icon = document.getElementById("icon");
+
+document.addEventListener("mousemove", (e) => {
+  icon.style.left = `${e.clientX}px`;
+  icon.style.top = `${e.clientY}px`;
+});
+

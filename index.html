@@ -11,6 +11,7 @@
 </head>
 
 <body class="relative h-[100vh]">
+<img src="/1ee1ca35-d7ee-451a-86b5-e5e033769433.jpeg" id="icon" alt="" class="w-[5%]">
     <nav class=" shadow-[0px_5px_10px_rgba(0,0,0,0.3)] bg-orange-400 pl-3 pr-3 flex flex-row-reverse sticky
  h-20 items-center justify-between">
         <div class="flex flex-row-reverse items-center gap-5">
@@ -47,12 +48,12 @@
             </h1>
         </div>
         <div id="plus"
-            class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 fixed top-150 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none">
-            <span class="text-6xl pb-4 text-blue-800 z-100">+</span>
+            class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 fixed top-150 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none z-[10]">
+            <span class="text-6xl pb-4 text-blue-800 z-10">+</span>
         </div>
         </div>
 
-        <div class="col-span-3 flex flex-col items-center gap-3" id="cards-container">
+        <div class="col-span-3 flex flex-col items-center gap-3 h-[64vh] overflow-y-auto scrollbar-hide " id="cards-container">
             <span class="text-9xl mb-3 row-end-5 col-end-3 flex items-center justify-center pt-0">💳</span>
             <span class="col-end-3 row-end-4 p-auto flex items-center justify-center text-md text-gray-500">your BZTAM
                 is empty</span>
@@ -86,7 +87,7 @@
             </div>
         </div>
     </main>
-    <div class="w-[100%] h-[100vh] absolute relative bottom-95 bg-[rgb(0,0,0,0.5)] backdrop-filter-[blur(3px)] hidden" id="modifie-container">
+    <div class="w-[100%] h-[101vh] relative bottom-[96%] bg-[rgb(0,0,0,0.5)] backdrop-filter-[blur(3px)] hidden" id="modifie-container">
         <div
             class="absolute top-[3%] right-[14%] w-[70%] h-[95%] bg-white z-100 rounded-2xl shadow-[0px_0px_20px_black]">
             <h1 class="text-center text-3xl p-4 font-extrabold text-gray-700 text-shadow-[3px_3px_5px_gray]">New Values</h1>
