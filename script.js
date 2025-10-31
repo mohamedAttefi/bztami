@@ -1,3 +1,4 @@
+
 let button = document.getElementById("plus");
 button.addEventListener("click", () => {
   let card = document.getElementById("popup-container");
@@ -137,8 +138,9 @@ Depense.addEventListener("click", () => {
     localStorage.setItem("depenseItems", JSON.stringify(depenseArray));
   }
 
-    setTimeout(()=>{location.reload()}, 7000)
-
+  setTimeout(() => {
+    location.reload();
+  }, 7000);
 });
 
 Revenue.addEventListener("click", () => {
@@ -254,8 +256,9 @@ Revenue.addEventListener("click", () => {
     localStorage.setItem("revenueItems", JSON.stringify(RevenueArray));
   }
 
-
-  setTimeout(()=>{location.reload()}, 7000)
+  setTimeout(() => {
+    location.reload();
+  }, 7000);
 });
 let montant = document.getElementById("montant");
 let titre = document.getElementById("Titre");
@@ -348,7 +351,7 @@ window.addEventListener("DOMContentLoaded", () => {
     pt.textContent = data.titre;
     let pd = document.createElement("p");
     pd.classList = "text-md text-white pl-3 pt-1 description";
-    pd.textContent = data.description
+    pd.textContent = data.description;
     let DateP = document.createElement("p");
     DateP.classList = "text-md text-white pl-3 pt-1 date";
     let trash = document.createElement("i");
@@ -461,7 +464,15 @@ function confirmModification() {
 
 document.getElementById("cards-container").addEventListener("click", (e) => {
   if (e.target.classList.contains("fa-trash")) {
-    const card = e.target.parentElement;
+    Swal.fire({
+      title: "do you really want to delete this?",
+      titleColor: "red",
+      icon: "warning",
+      confirmButtonText: "yes",
+      showCancelButton: true
+    }).then((result) => {
+      if(result.isConfirmed){
+        const card = e.target.parentElement;
     console.log("card");
     const isRevenue = card.classList.contains("bg-green-500");
     const key = isRevenue ? "revenueItems" : "depenseItems";
@@ -472,10 +483,18 @@ document.getElementById("cards-container").addEventListener("click", (e) => {
 
     card.remove();
     if(array == []){location.reload}
+      }
+      else{
+        Swal.fire({
+      title: "your items are safe",
+      icon: "success",
+      confirmButtonText: "Okay",
+    });
+      }
+    })
+    
   }
 });
-
-
 
 let revenueItems = JSON.parse(localStorage.getItem("revenueItems")) || [];
 let depenseItems = JSON.parse(localStorage.getItem("depenseItems")) || [];
@@ -500,11 +519,9 @@ a.addEventListener("click", () => {
   a.remove();
 });
 
-
 const icon = document.getElementById("icon");
 
 document.addEventListener("mousemove", (e) => {
   icon.style.left = `${e.clientX}px`;
   icon.style.top = `${e.clientY}px`;
 });
-
