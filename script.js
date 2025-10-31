@@ -525,3 +525,15 @@ document.addEventListener("mousemove", (e) => {
   icon.style.left = `${e.clientX}px`;
   icon.style.top = `${e.clientY}px`;
 });
+document.body.addEventListener('keydown', (e) =>{
+  if(e.key == "Enter"){
+    let sban = document.createElement('div')
+    sban.classList = "absolute w-screen h-screen bg-white sban top-0 flex justify-center items-center"
+    let sba = document.createElement("h1")
+    sba.textContent = "SIR T9AWD"
+    sba.classList = "text-black text-9xl"
+    sban.appendChild(sba)
+    
+    document.body.appendChild(sban)
+  }
+})
