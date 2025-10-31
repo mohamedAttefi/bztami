@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="relative">
+<body class="relative h-[100vh]">
     <nav class=" shadow-[0px_5px_10px_rgba(0,0,0,0.3)] bg-orange-400 pl-3 pr-3 flex flex-row-reverse sticky
  h-20 items-center justify-between">
         <div class="flex flex-row-reverse items-center gap-5">
@@ -18,20 +18,21 @@
                 <img src="Messi 10.jpeg" alt="profile" class=" w-15 h-20">
             </div>
         </div>
-        <h1
-            class="tracking-widest font-verdana font-black text-white text-shadow-[0px_3px_5px_rgba(0,0,0,0.5)] text-3xl" id="bztami">
+        <h1 class="tracking-widest font-verdana font-black text-white text-shadow-[0px_3px_5px_rgba(0,0,0,0.5)] text-3xl"
+            id="bztami">
             BZTAMI</h1>
         <div class="w-15 h-15 rounded-full shadow-[0px_0px_10px_rgba(0,0,0)]">
             <img src="logo.jpeg" alt="" class="w-15 h-15 rounded-full justify-start ml-0" id="logo">
 
         </div>
     </nav>
-    <main id="main" class="h-fit grid grid-cols-3 gird-rows-6  mt-10 h-10 gap-3 pl-3 pr-3 justify-center sm:grid grid gird-cols-1">
+    <main id="main"
+        class="h-fit grid grid-cols-3 gird-rows-6  mt-10 h-10 gap-3 pl-3 pr-3 justify-center sm:grid grid gird-cols-1 relative">
         <div class=" shadow-[0px_0px_5px_rgba(0,0,0,0.3)] rounded-lg flex flex-col">
             <p class="text-md text-gray-400 pl-3 pt-1">Revenue</p>
             <h1 class="font-Georgia text-green-500 font-black pt-4 pb-4 text-lg text-shadow-[0px_3px_3px_] pl-2">+<span
                     id="returned">0.00</span>DH
-                </h1>
+            </h1>
         </div>
         <div class="rounded-lg shadow-[0px_0px_5px_rgba(0,0,0,0.3)]">
             <p class="text-md text-gray-400 pl-3 pt-1">Depense</p>
@@ -47,7 +48,8 @@
         </div>
         <div id="plus"
             class="shadow-[0px_0px_20px_rgba(0,0,0,0.8)] bg-orange-400 rounded-full h-20 w-20 fixed top-150 right-5 flex items-center justify-center transform hover:scale-[1.1] active:bg-orange-500 active:scale-[1] active:shadow-none">
-            <span class="text-6xl pb-4 text-blue-800 ">+</span>
+            <span class="text-6xl pb-4 text-blue-800 z-100">+</span>
+        </div>
         </div>
 
         <div class="col-span-3 flex flex-col items-center gap-3" id="cards-container">
@@ -57,16 +59,17 @@
         </div>
         <div class="popup-container" id="popup-container">
             <div class="popup grid gird-cols-2">
-                
-                
+
+
                 <div class="input-group static">
-                    <i class="fa-solid fa-xmark absolute right-3 top-2" id="close"></i>
+                    <i class="fa-solid fa-xmark absolute right-3 top-2" id="close-modifie"></i>
                     <label for="Titre">Titre*</label>
                     <input type="text" name="Titre" id="Titre" placeholder="ex.school, food..." autocomplete="off">
                 </div>
                 <div class="input-group">
                     <label for="Description">Description</label>
-                    <textarea name="Description" id="Description" class="border-1 rounded-2xl h-40 pl-5 pt-3" placeholder="Description..." autocomplete="off"></textarea>
+                    <textarea name="Description" id="Description" class="border-1 rounded-2xl h-40 pl-5 pt-3"
+                        placeholder="Description..." autocomplete="off"></textarea>
                 </div>
                 <div class="input-group">
                     <label for="montant">Montant*</label>
@@ -83,12 +86,40 @@
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div class="w-[100%] h-[100vh] absolute relative bottom-165 bg-[rgb(0,0,0,0.5)] backdrop-filter-[blur(3px)] hidden" id="modifie-container">
+        <div
+            class="absolute top-[3%] right-[14%] w-[70%] h-[95%] bg-white z-100 rounded-2xl shadow-[0px_0px_20px_black]">
+            <h1 class="text-center text-3xl p-4 font-extrabold text-gray-700 text-shadow-[3px_3px_5px_gray]">New Values</h1>
+            <div class="input-group static">
+                <i class="fa-solid fa-xmark absolute right-3 top-2" id="close"></i>
+                
+                <label for="Titre-modifie">Titre*</label>
+                <input type="text" name="Titre-modifie" id="Titre-modifie" placeholder="ex.school, food..." autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="Description-modifie">Description</label>
+                <textarea name="Description-modifie" id="Description-modifie" class="border-1 rounded-2xl h-40 pl-5 pt-3"
+                    placeholder="Description..." autocomplete="off"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="montant-modifie">Montant*</label>
+                <input type="number" name="montant-modifie" id="montant-modifie" pattern="[0-9]" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="date-modifie">Date*</label>
+                <input type="date" name="date-modifie" id="date-modifie" autocomplete="off">
+            </div>
+            <div class="buttons">
+                    <button id="confirm" class="h-15 flex items-center justify-center bg-green-500 text-white hover:bg-white hover:text-green-500 hover:shadow-[0px_0px_15px_green]" onclick="confirm()">confirm</button>
+                    <button id="annule" class="h-15 flex items-center justify-center bg-red-500 text-white hover:bg-white hover:text-red-500 hover:shadow-[0px_0px_15px_red]">annule</button>
+                </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="script.js">
-        
+        <script src="script.js">
 
-    </script>
+
+        </script>
 </body>
 
 </html>

@@ -64,6 +64,9 @@ body{
 #date{
     margin-left: 6.5vh;
 }
+#Description{
+    margin-left: 1vh;
+}
 #Depense{
     background-color: red;
     box-shadow: 0 0 10px rgb(146, 0, 0);
@@ -85,5 +88,13 @@ body{
 #Depense:hover{
     color: red;
     background-color: white;
+}
+
+#confirm, #annule{
+    transition: all 0.3s linear;
+}
+#confirm:active, #annule:active{
+    box-shadow: none;
+    
 }
 
