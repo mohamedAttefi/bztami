@@ -1,11 +1,14 @@
+
+
 let button = document.getElementById("plus");
 button.addEventListener("click", () => {
   let card = document.getElementById("popup-container");
   card.style.visibility = "visible";
 });
 
-let close = document.getElementById("close");
-close.addEventListener("click", () => {
+let closePopup = document.getElementById("close");
+console.log(closePopup);
+closePopup.addEventListener("click", () => {
   let card = document.getElementById("popup-container");
   card.style.visibility = "hidden";
 });
@@ -19,6 +22,7 @@ let stored = true;
 let CardsContainer = document.getElementById("cards-container");
 let data;
 Depense.addEventListener("click", () => {
+  let a = Math.floor(Math.random()*1000)
   let montant = document.getElementById("montant");
   let titre = document.getElementById("Titre");
   let Description = document.getElementById("Description");
@@ -63,29 +67,28 @@ Depense.addEventListener("click", () => {
       CardsContainer.replaceChildren(CardContainer);
     }
     let DepenseCard = document.createElement("div");
-    DepenseCard.id = "DC" + parseInt((dCount += 2));
+    DepenseCard.id = "DC" + a;
     console.log(DepenseCard.id);
     DepenseCard.classList =
       "bg-red-500 shadow-[0px_0px_10px_red] rounded-lg h-30 relative z-[-1]";
 
     let tp = document.createElement("p");
-    tp.classList = "text-md text-white pl-3 pt-1 font-black";
+    tp.classList = "text-md text-white pl-3 pt-1 font-black titre";
     tp.innerHTML = titre.value;
 
     let dp = document.createElement("p");
-    dp.classList = "text-md text-white pl-3 pt-1";
+    dp.classList = "text-md text-white pl-3 pt-1 description";
     dp.innerHTML = Description.value;
 
     let Date = document.createElement("p");
-    Date.classList = "text-md text-white pl-3 pt-1";
+    Date.classList = "text-md text-white pl-3 pt-1 date";
     Date.innerHTML = date.value;
 
     let h1 = document.createElement("h1");
     h1.innerHTML = "-" + montant.value + " DH";
     console.log("lll");
     h1.classList =
-      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)]";
-
+      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)] montant";
     let trash = document.createElement("i");
     trash.classList = "fa-solid fa-trash absolute right-5 bottom-3";
     trash.id = "trash";
@@ -135,9 +138,12 @@ Depense.addEventListener("click", () => {
     depenseArray.push(data);
     localStorage.setItem("depenseItems", JSON.stringify(depenseArray));
   }
+    location.reload()
+
 });
 
 Revenue.addEventListener("click", () => {
+  let a = Math.floor(Math.random()*1000)
   let montant = document.getElementById("montant");
   let titre = document.getElementById("Titre");
   let Description = document.getElementById("Description");
@@ -180,7 +186,7 @@ Revenue.addEventListener("click", () => {
       CardsContainer.replaceChildren(CardContainer);
     }
     let RevenueCard = document.createElement("div");
-    RevenueCard.id = "RC" + parseInt((rCount += 2));
+    RevenueCard.id = "RC" +a;
     console.log(RevenueCard.id);
     RevenueCard.classList =
       " shadow-[0px_0px_10px_green] bg-green-500 rounded-lg h-30 relative";
@@ -188,17 +194,17 @@ Revenue.addEventListener("click", () => {
     let h1 = document.createElement("h1");
     h1.innerHTML = "+" + montant.value + " DH";
     h1.classList =
-      "pl-2 font-Georgia text-white font-black pb-4 text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)]";
+      "pl-2 font-Georgia text-white font-black pb-4 text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)] montant";
 
     let pt = document.createElement("p");
-    pt.classList = "text-xl text-white pl-3 pt-1 font-black";
+    pt.classList = "text-xl text-white pl-3 pt-1 font-black titre";
     pt.innerHTML = titre.value;
 
     let pd = document.createElement("p");
-    pd.classList = "text-md text-white pl-3 pt-1";
+    pd.classList = "text-md text-white pl-3 pt-1 description";
     pd.innerHTML = Description.value;
     let pDate = document.createElement("p");
-    pDate.classList = "text-md text-white pl-3 pt-1";
+    pDate.classList = "text-md text-white pl-3 pt-1 date";
     pDate.innerHTML = date.value;
     let trash = document.createElement("i");
     trash.classList = "fa-solid fa-trash absolute right-5 bottom-3";
@@ -247,8 +253,9 @@ Revenue.addEventListener("click", () => {
 
     RevenueArray.push(data);
     localStorage.setItem("revenueItems", JSON.stringify(RevenueArray));
-    stored = true;
   }
+
+  location.reload()
 });
 let montant = document.getElementById("montant");
 let titre = document.getElementById("Titre");
@@ -275,21 +282,22 @@ window.addEventListener("DOMContentLoaded", () => {
     let RevenueCard = document.createElement("div");
     RevenueCard.classList =
       " shadow-[0px_0px_10px_green] bg-green-500 rounded-lg h-30 self-center relative";
+    RevenueCard.id = data.id;
 
     let h1 = document.createElement("h1");
     h1.textContent = "+" + data.montant + " DH";
     h1.classList =
-      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)]";
+      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)] montant";
     let pt = document.createElement("p");
-    pt.classList = "text-xl text-white pl-3 pt-1 font-black";
+    pt.classList = "text-xl text-white pl-3 pt-1 font-black titre";
     pt.textContent = data.titre;
 
     let pd = document.createElement("p");
-    pd.classList = "text-md text-white pl-3 pt-1";
+    pd.classList = "text-md text-white pl-3 pt-1 description";
     pd.textContent = data.description;
 
     let DateP = document.createElement("p");
-    DateP.classList = "text-md text-white pl-3 pt-1";
+    DateP.classList = "text-md text-white pl-3 pt-1 date";
     DateP.textContent = data.date;
     let trash = document.createElement("i");
     trash.classList = "fa-solid fa-trash absolute right-5 bottom-3";
@@ -316,7 +324,10 @@ window.addEventListener("DOMContentLoaded", () => {
       Sold.textContent = "+" + Sold.textContent;
     }
   });
+});
 
+window.addEventListener('DOMContentLoaded', () => {
+  
   let depenseArray = localStorage.getItem("depenseItems");
   if (localStorage.getItem("depenseItems")) {
     depenseArray = JSON.parse(localStorage.getItem("depenseItems"));
@@ -324,7 +335,12 @@ window.addEventListener("DOMContentLoaded", () => {
     depenseArray = [];
   }
   if (depenseArray.length === 0) return;
-
+  let CardsContainer = document.getElementById("cards-container");
+  let CardContainer = document.createElement("div");
+  CardContainer.id = "CardContainer";
+  CardContainer.classList =
+    "grid grid-cols-2 pl-5 pr-5 gap-5 justify-around items-start rounded-lg h-fit w-screen mt-10";
+  CardsContainer.replaceChildren(CardContainer);
   CardContainer.id = "CardContainer";
   CardContainer.classList =
     "grid grid-cols-2 pl-5 pr-5 gap-5 justify-around items-start rounded-lg h-fit w-screen mt-10";
@@ -339,22 +355,16 @@ window.addEventListener("DOMContentLoaded", () => {
     let h1 = document.createElement("h1");
     h1.textContent = "-" + data.montant + " DH";
     h1.classList =
-      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)] ";
-
+      "pl-2 font-Georgia text-white font-black text-2xl text-shadow-[0px_3px_3px_rgb(0,0,0,0.3)] montant";
     let pt = document.createElement("p");
-    pt.classList = "text-xl text-white pl-3 pt-1 font-black";
+    pt.classList = "text-xl text-white pl-3 pt-1 font-black titre";
     pt.textContent = data.titre;
-
     let pd = document.createElement("p");
-    pd.classList = "text-md text-white pl-3 pt-1";
-    pd.textContent = data.description;
-
+    pd.classList = "text-md text-white pl-3 pt-1 description";
     let DateP = document.createElement("p");
-    DateP.classList = "text-md text-white pl-3 pt-1";
-    DateP.textContent = data.date;
+    DateP.classList = "text-md text-white pl-3 pt-1 date";
     let trash = document.createElement("i");
     trash.classList = "fa-solid fa-trash absolute right-5 bottom-3";
-    trash.id = "trash";
     let modifie = document.createElement("i");
     modifie.classList = "fa-solid fa-pen absolute right-5 bottom-10";
     modifie.id = "modifie";
@@ -386,63 +396,94 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   console.log(Sold.textContent);
   console.log(parseInt(data.depensed));
-});
+})
 
 let editedCardId = null;
 
 document.getElementById("cards-container").addEventListener("click", (e) => {
+  console.log("xi");
   if (e.target.classList.contains("fa-pen")) {
     const modifiePop = document.getElementById("modifie-container");
     modifiePop.classList.remove("hidden");
 
     editedCardId = e.target.parentElement.id;
-    console.log(editedCardId)
+    console.log(editedCardId);
   }
 });
-document.getElementById("confirm")
+document.getElementById("close-modifie").addEventListener("click", (e) => {
+  const modifiePop = document.getElementById("modifie-container");
+  modifiePop.classList.add("hidden");
+});
 
-function confirm(){
+function confirmModification() {
   if (!editedCardId) return;
+  console.log(editedCardId)
+
+  const newTitre = document.getElementById("Titre-modifie");
+  const newDate = document.getElementById("date-modifie");
+  const newDescription = document.getElementById("Description-modifie");
+  const newMontant = document.getElementById("montant-modifie");
 
   const card = document.getElementById(editedCardId);
-  const isRevenue = card.classList.contains("bg-green-500");
-  const key = isRevenue ? "revenueItems" : "depenseItems";
-  const array = JSON.parse(localStorage.getItem(key)) || [];
 
-  const updated = array.map((item) =>
+  const oldTitre = card.querySelector(".titre");
+  console.log(oldTitre)
+  const oldDate = card.querySelector(".date");
+  const oldDescription = card.querySelector(".description");
+  const oldMontant = card.querySelector(".montant");
+
+  if (newTitre.value.trim() !== "") oldTitre.textContent = newTitre.value;
+  console.log(oldTitre.textContent)
+  if (newDate.value.trim() !== "") oldDate.textContent = newDate.value;
+  if (newDescription.value.trim() !== "") oldDescription.textContent = newDescription.value;
+  if (newMontant.value.trim() !== "")
+    oldMontant.textContent =
+      (card.classList.contains("bg-red-500") ? "-" : "+") +
+      newMontant.value +
+      " DH";
+
+  const key = card.classList.contains("bg-green-500")
+    ? "revenueItems"
+    : "depenseItems";
+
+  const array = JSON.parse(localStorage.getItem(key)) || [];
+  const updatedArray = array.map((item) =>
     item.id === editedCardId
       ? {
           ...item,
-          titre: newTitre.value,
-          description: newDescription.value,
-          date: newDate.value,
-          montant: newMontant.value,
+          titre: newTitre.value || item.titre,
+          date: newDate.value || item.date,
+          description: newDescription.value || item.description,
+          montant: newMontant.value || item.montant,
         }
       : item
   );
 
-  localStorage.setItem(key, JSON.stringify(updated));
+  localStorage.setItem(key, JSON.stringify(updatedArray));
 
-  // Update DOM
-  card.querySelector("p:nth-child(4)").textContent = newDate.value;
-  card.querySelector("p:nth-child(3)").textContent = newDescription.value;
-  card.querySelector("p:nth-child(2)").textContent = newTitre.value;
-  card.classList.contains("bg-green-500")? "+" : "-") + newMontant.value + " DH";
-
-  // Close popup
   document.getElementById("modifie-container").classList.add("hidden");
+
+  location.reload()
 }
+
+
+
 document.getElementById("cards-container").addEventListener("click", (e) => {
   if (e.target.classList.contains("fa-trash")) {
     const card = e.target.parentElement;
-    console.log(card)
+    console.log("card");
     const isRevenue = card.classList.contains("bg-green-500");
     const key = isRevenue ? "revenueItems" : "depenseItems";
     const array = JSON.parse(localStorage.getItem(key)) || [];
+    
+
+    
 
     const updated = array.filter((item) => item.id !== card.id);
     localStorage.setItem(key, JSON.stringify(updated));
 
+        
     card.remove();
+    location.reload()
   }
 });
